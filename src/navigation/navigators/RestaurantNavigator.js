@@ -54,6 +54,12 @@ const RestaurantSettingsStack = createStackNavigator({
       title: i18n.t('RESTAURANT_OPENING_HOURS'),
     })
   },
+  RestaurantPrinter: {
+    screen: navigation.RestaurantPrinter,
+    navigationOptions: ({ navigation }) => ({
+      title: i18n.t('RESTAURANT_PRINTER'),
+    })
+  }
 }, {
   initialRouteName: 'RestaurantSettingsHome',
   defaultNavigationOptions

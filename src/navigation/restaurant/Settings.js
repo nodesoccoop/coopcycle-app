@@ -75,6 +75,17 @@ class SettingsScreen extends Component {
                 <Icon name="arrow-forward" />
               </Right>
             </ListItem>
+            <ListItem icon onPress={ () => navigate('RestaurantPrinter') }>
+              <Left>
+                <Icon type="FontAwesome" name="print" />
+              </Left>
+              <Body>
+                <Text>{ this.props.t('RESTAURANT_SETTINGS_PRINTER') }</Text>
+              </Body>
+              <Right>
+                <Icon name="arrow-forward" />
+              </Right>
+            </ListItem>
             <ListItem icon onPress={ () => navigate('RestaurantOpeningHours') } { ...openingHoursProps }>
               <Left>
                 <Icon active name="calendar" />
