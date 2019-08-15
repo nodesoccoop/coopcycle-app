@@ -75,7 +75,7 @@ class RestaurantsPage extends Component {
         <RestaurantSearch
           ref={ component => this.restaurantSearch = component }
           onChange={ this._onAddressChange.bind(this) } />
-        <Content { ...contentProps }>
+        <Content { ...contentProps } testID="checkoutSearchContent">
           <RestaurantList
             restaurants={ restaurants }
             onItemClick={ restaurant => navigate('CheckoutRestaurant', { restaurant }) } />

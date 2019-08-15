@@ -24,6 +24,11 @@ const styles = StyleSheet.create({
 
 class RestaurantList extends Component {
 
+  constructor(props) {
+    super(props)
+    this.matchingCounter = 0
+  }
+
   renderItem(restaurant, index) {
 
     const asap =
@@ -38,16 +43,23 @@ class RestaurantList extends Component {
         return true
       })
 
+    let testID = `restaurants:${index}`
+    if (restaurant.address.streetAddress.match(/75020/g)) {
+      testID = `restaurantMatches:${this.matchingCounter}`
+      this.matchingCounter += 1
+    }
+
     return (
       <TouchableOpacity style={ styles.item }
         onPress={ () => this.props.onItemClick(restaurant, asap) }
-        testID={ `restaurantIndex:${index}` }>
+        testID={ testID }>
         <Grid>
           <Col size={ 1 }>
             <Thumbnail size={60} source={{ uri: restaurant.image }} />
           </Col>
           <Col size={ 4 } style={{ paddingLeft: 10 }}>
-            <Text style={ styles.restaurantNameText }>{ restaurant.name }</Text>
+            <Text
+              style={ styles.restaurantNameText }>{ restaurant.name }</Text>
             <Text note>{ restaurant.address.streetAddress }</Text>
             <Text note style={{ fontWeight: 'bold' }}>
               { this.props.t('CHECKOUT_FROM', { date: moment(asap).format('dddd LT') }) }
